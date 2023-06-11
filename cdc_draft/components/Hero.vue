@@ -1,6 +1,6 @@
 <template>
   <section id="hero">
-    <div class="un-flex un-flex-col un-mb-40">
+    <div class="un-flex un-flex-col">
       <TitleMain />
       <Preview />
     </div>

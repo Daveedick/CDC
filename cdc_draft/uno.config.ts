@@ -6,5 +6,8 @@ export default defineConfig({
   presets: [
     presetUno({prefix: 'un-'}),
     presetIcons()
-  ]
+  ],
+  shortcuts: {
+    'un-hover-scale' : 'hover:un-scale-100.5 hover:un-translate-y--.5 un-transition-transform un-cursor-default',
+  }
 })

@@ -1,52 +1,64 @@
 <template>
   <section id="navbar">
-    <div class="flex un-justify-between un-items-center un-z-100 un-relative un-mb-40">
-      <img src="/images/logo.svg" alt="Logo">
+    <div class="flex un-justify-between un-items-center un-z-100 un-relative un-mb-8 md:un-mb-40">
+      <!-- LOGO -->
+      <img src="/images/logo.svg" alt="Logo" class="un-w-23 un-h-6 md:un-w-32.5 md:un-h-16">
+
+      <!-- DESCTOP -->
       <ul
-        class="list-none un-m-0 un-rd-2 un-p-2 flex overflow-x-auto select-none un-bg-white un-backdrop-filter fixed un-right-22"
+        class="hidden lg:flex list-none un-m-0 un-rd-2 un-p-2 overflow-x-auto select-none un-bg-white un-backdrop-filter fixed un-right-22"
         style="--un-bg-opacity: .05; --un-backdrop-blur: blur(.5rem);">
         <li class="mr-2">
           <a v-ripple
-            class="cursor-pointer un-px-4 un-py-3 flex align-items-center hover:un-bg-white text-white un-rd-2 transition-colors transition-duration-150 p-ripple"
-            style="--un-bg-opacity: .1;"
-            :class="{ 'bg-primary hover:bg-primary': active2 === 0, 'text-700': active2 !== 0 }" @click="active2 = 0">
+            class="cursor-pointer un-px-4 un-py-3 flex align-items-center hover:un-bg-white text-white un-rd-2 un-transition-colors p-ripple"
+            style="--un-bg-opacity: .1;" :class="{ 'un-bg-white': anchor === 0 }" @click="anchor = 0">
             <span class="font-medium">Как это работает</span>
           </a>
         </li>
         <li class="mr-2">
           <a v-ripple
-            class="cursor-pointer un-px-16px un-py-12px flex align-items-center hover:un-bg-white text-white un-rd-2 transition-colors transition-duration-150 p-ripple"
-            style="--un-bg-opacity: .1;"
-            :class="{ 'bg-primary hover:bg-primary': active2 === 1, 'text-700': active2 !== 1 }" @click="active2 = 1">
+            class="cursor-pointer un-px-16px un-py-12px flex align-items-center hover:un-bg-white text-white un-rd-2 un-transition-colors p-ripple"
+            style="--un-bg-opacity: .1;" :class="{ 'un-bg-white': anchor === 1 }" @click="anchor = 1">
             <span class="font-medium">Примеры</span>
           </a>
         </li>
         <li class="mr-2">
           <a v-ripple
-            class="cursor-pointer un-px-16px un-py-12px flex align-items-center hover:un-bg-white text-white un-rd-2 transition-colors transition-duration-150 p-ripple"
-            style="--un-bg-opacity: .1;"
-            :class="{ 'bg-primary hover:bg-primary': active2 === 2, 'text-700': active2 !== 2 }" @click="active2 = 2">
+            class="cursor-pointer un-px-16px un-py-12px flex align-items-center hover:un-bg-white text-white un-rd-2 un-transition-colors p-ripple"
+            style="--un-bg-opacity: .1;" :class="{ 'un-bg-white': anchor === 2 }" @click="anchor = 2">
             <span class="font-medium">Отзывы</span>
           </a>
         </li>
         <li class="mr-2">
           <a v-ripple
-            class="cursor-pointer un-px-16px un-py-12px flex align-items-center hover:un-bg-white text-white un-rd-2 transition-colors transition-duration-150 p-ripple"
-            style="--un-bg-opacity: .1;"
-            :class="{ 'bg-primary hover:bg-primary': active2 === 3, 'text-700': active2 !== 3 }" @click="active2 = 3">
+            class="cursor-pointer un-px-16px un-py-12px flex align-items-center hover:un-bg-white text-white un-rd-2 un-transition-colors p-ripple"
+            style="--un-bg-opacity: .1;" :class="{ 'un-bg-white': anchor === 3 }" @click="anchor = 3">
             <span class="font-medium">Контакты</span>
           </a>
         </li>
         <li>
-          <a v-ripple
-            class="cursor-pointer un-px-16px un-py-12px flex align-items-center bg-purple-700 text-white hover:bg-green-500 un-rd-2 transition-colors transition-duration-150 p-ripple"
-            :class="{ 'bg-primary hover:bg-primary': active2 === 4, 'text-700': active2 !== 4 }" @click="active2 = 4">
+          <a to="/" v-ripple
+            class="cursor-pointer un-px-16px un-py-12px flex un-decoration-none align-items-center cdc-gradient purple to-green text-white un-rd-2 un-transition-all p-ripple">
             <span class="font-medium">В конструктор</span>
           </a>
         </li>
       </ul>
+
+      <!-- MOBILE -->
+      <div class="flex md:hidden">
+
+      </div>
     </div>
   </section>
 </template>
 
-<script></script>
+<script lang="ts">
+export default {
+  setup() {
+    const anchor = ref();
+    return {
+      anchor
+    }
+  }
+}
+</script>

@@ -1,11 +1,16 @@
 <template>
-  <div class="text-center">
-    <div class="text-white font-bold un-text-22 un-lh-24 mb-3">Виртуальный конструктор одежды</div>
-    <div class="mb-5 un-text-white" style="--un-text-opacity: .75;">3D&nbsp;конструктор одежды, который изменит
+  <div class="text-center un-cursor-default">
+    <div class="text-white font-bold un-text-11 un-lh-14 un-mb-2 md:un-text-22 md:un-lh-24 md:un-mb-4">Виртуальный
+      конструктор одежды
+    </div>
+    <div class="un-mb-4 md:un-mb-8 un-text-white" style="--un-text-opacity: .75;">3D&nbsp;конструктор одежды, который
+      изменит
       подход
       к&nbsp;созданию дизайна
       и&nbsp;оптимизирует производственные процессы</div>
-    <Button label="Попробовать бесплатно"
-      class="font-bold un-mb-20 un-px-5.6 un-py-5 p-button-raised bg-purple-700 un-rd-2 hover:bg-green-500 white-space-nowrap un-border-none"></Button>
+    <NuxtLink to="/" v-ripple
+      class="un-w-full un-inline-block md:un-wa un-mb-20 un-px-6 un-py-3 md:un-px-6 md:un-py-5 text-center text-white font-bold un-decoration-none cdc-gradient purple to-green un-rd-2 cursor-pointer white-space-nowrap un-border-none un-transition-all p-ripple">
+      <span>Попробовать бесплатно</span>
+    </NuxtLink>
   </div>
 </template>
