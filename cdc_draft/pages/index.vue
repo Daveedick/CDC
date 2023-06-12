@@ -24,6 +24,10 @@
     <BaseLayer>
       <Testimonials />
     </BaseLayer>
+
+    <BaseLayer>
+      <ContactUs />
+    </BaseLayer>
   </div>
 </template>
 

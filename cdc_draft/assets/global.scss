@@ -73,3 +73,12 @@ p {
     background-image: var(--bg-gradient-purple);
   }
 }
+
+// INPUTS
+input {
+  &[type="text"] {
+    &::placeholder {
+      font-size: 1rem;
+    }
+  }
+}
