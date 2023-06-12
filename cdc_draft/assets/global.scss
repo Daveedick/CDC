@@ -8,6 +8,7 @@
   --scrollbar-width: .25rem;
 }
 
+// GENERAL
 body {
   margin: 0;
   padding: 0;
@@ -21,6 +22,10 @@ body {
 
 section:not(#navbar) {
   margin-bottom: 10rem;
+}
+
+p {
+  margin: unset;
 }
 
 /* SCROLLBAR */
