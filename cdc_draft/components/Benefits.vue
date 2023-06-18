@@ -1,49 +1,86 @@
 <template>
   <div id="benefits">
-    <TitleSecondary :title="text.title" :subtitle="text.subtitle" class="un-mb-8 md:un-mb-16" />
+    <TitleSecondary :title="texts.titleSecondary.title" :subtitle="texts.titleSecondary.subtitle"
+      class="un-mb-8 md:un-mb-16" />
 
-    <!-- CARDS -->
-    <div class="un-flex un-h-143 un-gap-8">
+    <!-- CARDS DESKTOP -->
+    <div class="un-hidden lg:un-flex un-h-143 un-gap-8">
       <!-- 1 -->
       <div class="un-grid un-gap-8" style="grid-template-rows: 1fr;">
         <div class="un-p-8 cdc-gradient purple un-rd-4 un-hover-scale">
-          <div class="un-text-white un-text-6 un-lh-8 un-fw-bold un-mb-2">Удобный сервис</div>
-          <div class="un-text-white">Привлекайте новых клиентов удобным и&nbsp;современным сервисом, который
-            не&nbsp;требует дополнительных знаний и&nbsp;навыков</div>
+          <div class="un-text-white un-text-6 un-lh-8 un-fw-bold un-mb-2">{{ texts.cards.card1.title }}</div>
+          <div class="un-text-white">{{ texts.cards.card1.description }}</div>
         </div>
       </div>
       <!-- 2 -->
       <div class="un-grid un-gap-8" style="grid-template-rows: 1fr 1fr;">
         <div class="un-p-8 un-bg-#DADFE5 un-rd-4 un-hover-scale">
-          <div class="un-text-6 un-lh-8 un-fw-bold un-mb-2">Профессиональная визуализация</div>
-          <div>Демонстрируйте разнообразные дизайны в&nbsp;3D, и&nbsp;упрощайте процесс согласований и&nbsp;доработок
-            клиентов</div>
+          <div class="un-text-6 un-lh-8 un-fw-bold un-mb-2">{{ texts.cards.card2.title }}</div>
+          <div>{{ texts.cards.card2.description }}</div>
         </div>
         <div class="un-p-8 un-bg-#DADFE5 un-rd-4 un-hover-scale">
-          <div class="un-text-6 un-lh-8 un-fw-bold un-mb-2">Быстрый цикл сделки</div>
-          <div>Сокращайте цикл сделки заказа без пошива образца, увеличивая маржинальность партии</div>
+          <div class="un-text-6 un-lh-8 un-fw-bold un-mb-2">{{ texts.cards.card3.title }}</div>
+          <div>{{ texts.cards.card3.description }}</div>
         </div>
       </div>
       <!-- 3 -->
       <div class="un-grid un-gap-8" style="grid-template-rows: 2fr 1fr;">
         <div class="un-p-8 cdc-gradient purple un-rd-4 un-hover-scale">
-          <div class="un-text-white un-text-6 un-lh-8 un-fw-bold un-mb-2">Ускоренный запуск</div>
-          <div class="un-text-white">Ускоряйте процессы по&nbsp;запуску пошива, утверждая цветовое сочетание будущей
-            партии клиента прямо у&nbsp;нас в&nbsp;сервисе</div>
+          <div class="un-text-white un-text-6 un-lh-8 un-fw-bold un-mb-2">{{ texts.cards.card4.title }}</div>
+          <div class="un-text-white">{{ texts.cards.card4.description }}</div>
         </div>
         <div class="un-p-8 un-bg-#DADFE5 un-rd-4 un-hover-scale">
-          <div class="un-text-6 un-lh-8 un-fw-bold un-mb-2">Рост продаж</div>
-          <div>Увеличивайте количество продаж, оперативно обрабатывая заказы клиентов в&nbsp;режиме онлайн</div>
+          <div class="un-text-6 un-lh-8 un-fw-bold un-mb-2">{{ texts.cards.card5.title }}</div>
+          <div>{{ texts.cards.card5.description }}</div>
         </div>
       </div>
     </div>
+
+    <!-- CARDS MOBILE -->
+    <SwiperSetup :loop="false" :centeredSlides="true" :breakpoints="{
+      // 768: {
+      //   slidesPerView: 2,
+      // }
+    }">
+      <SwiperSlide v-for="card in texts.cards" :key="card" class="un-mb-8">
+        <div class="un-h-88 un-max-w-90 un-ma un-p-8 cdc-gradient purple un-rd-4">
+          <div class="un-text-white un-text-6 un-lh-8 un-fw-bold un-mb-2">{{ card.title }}</div>
+          <div class="un-text-white">{{ card.description }}</div>
+        </div>
+      </SwiperSlide>
+      <div class="swiper-pagination relative"></div>
+    </SwiperSetup>
 
   </div>
 </template>
 
 <script setup lang="ts">
-const text = {
-  title: 'Выгода для вашего бизнеса',
-  subtitle: 'Увеличьте свою прибыль за счёт нашего автоматизированного сервиса'
+const texts = {
+  titleSecondary: {
+    title: 'Выгода для вашего бизнеса',
+    subtitle: 'Увеличьте свою прибыль за счёт нашего автоматизированного сервиса'
+  },
+  cards: {
+    card1: {
+      title: 'Удобный сервис',
+      description: 'Привлекайте новых клиентов удобным и современным сервисом, который не требует дополнительных знаний и навыков',
+    },
+    card2: {
+      title: 'Профессиональная визуализация',
+      description: 'Демонстрируйте разнообразные дизайны в 3D, и упрощайте процесс согласований и доработок клиентов',
+    },
+    card3: {
+      title: 'Быстрый цикл сделки',
+      description: 'Сокращайте цикл сделки заказа без пошива образца, увеличивая маржинальность партии',
+    },
+    card4: {
+      title: 'Ускоренный запуск',
+      description: 'Ускоряйте процессы по запуску пошива, утверждая цветовое сочетание будущей партии клиента прямо у нас в сервисе',
+    },
+    card5: {
+      title: 'Рост продаж',
+      description: 'Увеличивайте количество продаж, оперативно обрабатывая заказы клиентов в режиме онлайн',
+    },
+  }
 }
 </script>

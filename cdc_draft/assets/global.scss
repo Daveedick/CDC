@@ -22,17 +22,25 @@ body {
 
 section:not(#navbar) {
   margin-bottom: 10rem;
+  @media (max-width: 768px) {
+    margin-bottom: 2rem;
+  }
 }
 
 p {
   margin: unset;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+}
+
 /* SCROLLBAR */
 ::-webkit-scrollbar {
   display: none;
   width: .25rem;
-  @media(max-width: 768px) {
+  @media(max-width: 1024px) {
     width: .1rem;
   }
   &-track {
@@ -79,6 +87,40 @@ input {
   &[type="text"] {
     &::placeholder {
       font-size: 1rem;
+    }
+  }
+}
+
+// SWIPER
+.swiper {
+  --swiper-theme-color: white;
+  --swiper-pagination-bullet-inactive-color: var(--swiper-theme-color);
+  --swiper-pagination-bullet-inactive-opacity: 1;
+  --swiper-pagination-bullet-size: .5rem;
+
+  .swiper-pagination-bullet {
+    transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &-active {
+      box-sizing: border-box;
+      width: calc(var(--swiper-pagination-bullet-size) * 2);
+      height: calc(var(--swiper-pagination-bullet-size) * 2);
+      background: transparent;
+      border: 2px solid var(--swiper-theme-color);
+    }
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    top: unset;
+    bottom: 0;
+  }
+
+  .swiper-slide {
+    opacity: 0 !important;
+
+    &-active {
+      opacity: 1 !important;
     }
   }
 }

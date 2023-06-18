@@ -9,7 +9,7 @@
       к&nbsp;созданию дизайна
       и&nbsp;оптимизирует производственные процессы</div>
     <NuxtLink to="/" v-ripple
-      class="un-w-full un-inline-block md:un-wa un-mb-20 un-px-6 un-py-3 md:un-px-6 md:un-py-5 text-center text-white font-bold un-decoration-none cdc-gradient purple to-green un-rd-2 cursor-pointer white-space-nowrap un-border-none un-transition-all p-ripple">
+      class="un-w-full un-inline-block md:un-wa un-mb-8 md:un-mb-20 un-px-6 un-py-3 md:un-px-6 md:un-py-5 text-center text-white font-bold un-decoration-none cdc-gradient purple to-green un-rd-2 cursor-pointer white-space-nowrap un-border-none un-transition-all p-ripple">
       <span>Попробовать бесплатно</span>
     </NuxtLink>
   </div>

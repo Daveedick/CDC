@@ -1,6 +1,6 @@
 <template>
   <section id="contactUs">
-    <div class="un-p-20 un-bg-gray un-rd-16">
+    <div class="un-p-20 un-bg-#111212 un-rd-16">
 
       <div class="un-relative un-mb-16 un-p-16 cdc-gradient purple un-rd-4">
 
@@ -25,6 +25,24 @@
           <Button label="Отправить"
             class="un-w-full un-py-4 un-px-23 cdc-gradient purple to-green un-border-none un-rd-2" />
         </form>
+      </div>
+
+      <!-- Contact info -->
+      <div class="flex un-flex-col un-items-center">
+        <a href="tel:+79167777777" class="un-mb-2 hover:un-decoration-underline">+7 (916) 777 77 77</a>
+        <a href="mailto:commedescreator@gmail.com"
+          class="un-mb-8 hover:un-decoration-underline">commedescreator@gmail.com</a>
+        <div class="flex un-gap-4">
+          <a href="/" class="un-cursor-pointer un-relative un-hover-scale"><img src="images/logo-vk.svg" alt="Our VK"></a>
+          <a href="/" class="un-cursor-pointer un-relative un-hover-scale"><img src="images/logo-insta.svg"
+              alt="Our Instagram"></a>
+          <a href="/" class="un-cursor-pointer un-relative un-hover-scale"><img src="images/logo-tg.svg"
+              alt="Our Telegram"></a>
+        </div>
+        <div class="un-self-start">
+          <img src="images/logo.svg" alt="CDC Logo">
+        </div>
+
       </div>
 
 
