@@ -1,9 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: true,
   css: [
       "primevue/resources/themes/lara-light-blue/theme.css",
       "primevue/resources/primevue.css",
-      // "primeicons/primeicons.css",
       "primeflex/primeflex.css",
       "@/assets/global.scss"
   ],
@@ -12,6 +12,16 @@ export default defineNuxtConfig({
   },
   modules: [
     '@unocss/nuxt',
-    'nuxt-swiper'
+    // '@nuxtjs/eslint-module',
+    '@pinia/nuxt',
+    '@vueuse/nuxt',
+
   ],
+  pinia: {
+		autoImports: ['defineStore', 'storeToRefs']
+	},
+  // imports: {
+  //   autoImport: false
+  // },
+  // components: false
 })

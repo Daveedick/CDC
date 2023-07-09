@@ -20,13 +20,6 @@ body {
   line-height: 1.5rem;
 }
 
-section:not(#navbar) {
-  margin-bottom: 10rem;
-  @media (max-width: 768px) {
-    margin-bottom: 2rem;
-  }
-}
-
 p {
   margin: unset;
 }
@@ -36,12 +29,27 @@ a {
   text-decoration: none;
 }
 
+img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	padding: 0;
+}
+
 /* SCROLLBAR */
 ::-webkit-scrollbar {
-  display: none;
-  width: .25rem;
+  width: .4rem;
   @media(max-width: 1024px) {
-    width: .1rem;
+    width: .2rem;
   }
   &-track {
     background: transparent;
@@ -52,16 +60,6 @@ a {
       background: var(--bg-gradient-green);
     }
   }
-}
-#customScrollbar {
-  position: fixed;
-  right: 0;
-  top: 0;
-  width: var(--scrollbar-width);
-  height: 100dvh;
-}
-#customScrollbar > div {
-  transition: height .25s linear;
 }
 
 /* Gradients */
@@ -91,36 +89,26 @@ input {
   }
 }
 
-// SWIPER
-.swiper {
-  --swiper-theme-color: white;
-  --swiper-pagination-bullet-inactive-color: var(--swiper-theme-color);
-  --swiper-pagination-bullet-inactive-opacity: 1;
-  --swiper-pagination-bullet-size: .5rem;
+// CAROUSEL
+.p-carousel {
 
-  .swiper-pagination-bullet {
-    transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
+      .p-carousel-indicators {
 
-    &-active {
-      box-sizing: border-box;
-      width: calc(var(--swiper-pagination-bullet-size) * 2);
-      height: calc(var(--swiper-pagination-bullet-size) * 2);
-      background: transparent;
-      border: 2px solid var(--swiper-theme-color);
+        .p-carousel-indicator {
+          display: flex;
+          align-items: center;
+
+          button {
+            width: var(--indicator-size);
+            height: var(--indicator-size);
+            border-radius: 100%;
+          }
+
+          &.p-highlight button {
+            width: calc(var(--indicator-size) * 2);
+            height: calc(var(--indicator-size) * 2);
+            background-color: transparent !important;
+          }
+        }
+      }
     }
-  }
-
-  .swiper-button-next,
-  .swiper-button-prev {
-    top: unset;
-    bottom: 0;
-  }
-
-  .swiper-slide {
-    opacity: 0 !important;
-
-    &-active {
-      opacity: 1 !important;
-    }
-  }
-}

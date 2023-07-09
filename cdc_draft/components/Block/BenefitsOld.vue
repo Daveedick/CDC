@@ -1,19 +1,28 @@
 <template>
   <div id="benefits">
-    <TitleSecondary :title="texts.titleSecondary.title" :subtitle="texts.titleSecondary.subtitle"
-      class="un-mb-8 md:un-mb-16" />
+    <TitleSecondary
+      :title="texts.titleSecondary.title"
+      :subtitle="texts.titleSecondary.subtitle"
+      class="un-mb-8 md:un-mb-16"
+    />
 
     <!-- CARDS DESKTOP -->
-    <div class="un-hidden lg:un-flex un-h-143 un-gap-8">
+    <div class="flex un-h-143 un-gap-8">
       <!-- 1 -->
-      <div class="un-grid un-gap-8" style="grid-template-rows: 1fr;">
+      <div
+        class="un-grid un-gap-8"
+        style="grid-template-rows: 1fr;"
+      >
         <div class="un-p-8 cdc-gradient purple un-rd-4 un-hover-scale">
           <div class="un-text-white un-text-6 un-lh-8 un-fw-bold un-mb-2">{{ texts.cards.card1.title }}</div>
           <div class="un-text-white">{{ texts.cards.card1.description }}</div>
         </div>
       </div>
       <!-- 2 -->
-      <div class="un-grid un-gap-8" style="grid-template-rows: 1fr 1fr;">
+      <div
+        class="un-grid un-gap-8"
+        style="grid-template-rows: 1fr 1fr;"
+      >
         <div class="un-p-8 un-bg-#DADFE5 un-rd-4 un-hover-scale">
           <div class="un-text-6 un-lh-8 un-fw-bold un-mb-2">{{ texts.cards.card2.title }}</div>
           <div>{{ texts.cards.card2.description }}</div>
@@ -24,7 +33,10 @@
         </div>
       </div>
       <!-- 3 -->
-      <div class="un-grid un-gap-8" style="grid-template-rows: 2fr 1fr;">
+      <div
+        class="un-grid un-gap-8"
+        style="grid-template-rows: 2fr 1fr;"
+      >
         <div class="un-p-8 cdc-gradient purple un-rd-4 un-hover-scale">
           <div class="un-text-white un-text-6 un-lh-8 un-fw-bold un-mb-2">{{ texts.cards.card4.title }}</div>
           <div class="un-text-white">{{ texts.cards.card4.description }}</div>
@@ -37,24 +49,27 @@
     </div>
 
     <!-- CARDS MOBILE -->
-    <SwiperSetup :loop="false" :centeredSlides="true" :breakpoints="{
-      // 768: {
-      //   slidesPerView: 2,
-      // }
-    }">
-      <SwiperSlide v-for="card in texts.cards" :key="card" class="un-mb-8">
-        <div class="un-h-88 un-max-w-90 un-ma un-p-8 cdc-gradient purple un-rd-4">
-          <div class="un-text-white un-text-6 un-lh-8 un-fw-bold un-mb-2">{{ card.title }}</div>
-          <div class="un-text-white">{{ card.description }}</div>
-        </div>
+    <SwiperSetup
+      :loop="false"
+      :centeredSlides="true"
+      class="un-max-w-90 swiper-mobile"
+    >
+      <SwiperSlide
+        v-for="card in texts.cards"
+        :key="card.title"
+        class="un-h-88  un-ma un-mb-8 un-p-8 cdc-gradient purple un-rd-4"
+      >
+        <div class="un-text-white un-text-6 un-lh-8 un-fw-bold un-mb-2">{{ card.title }}</div>
+        <div class="un-text-white">{{ card.description }}</div>
       </SwiperSlide>
-      <div class="swiper-pagination relative"></div>
+      <div class="swiper-pagination relative flex un-justify-center un-items-center"></div>
     </SwiperSetup>
 
   </div>
 </template>
 
 <script setup lang="ts">
+
 const texts = {
   titleSecondary: {
     title: 'Выгода для вашего бизнеса',
@@ -84,3 +99,13 @@ const texts = {
   }
 }
 </script>
+
+<style lang="scss">
+#benefits {
+  .swiper-mobile {
+    .swiper-pagination-bullet-active {
+      border-color: #9D75F3;
+    }
+  }
+}
+</style>
