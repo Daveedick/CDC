@@ -7,6 +7,7 @@
 			margin="sm"
 		/>
 		<BlockForm margin="sm" />
+		<BlockDisplay layer="top" />
 	</div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
 	<section
 		ref="instanceRef"
-		:class="margin === 'l' ? 'un-max-w-360 un-mb-8 lg:un-mb-40 un-ma' : 'un-max-w-360 un-mb-8 lg:un-mb-16 un-ma'"
+		:class="margin === 'l' ? 'un-max-w-360 un-mb-8 lg:un-mb-40 un-ma' : 'un-max-w-360 un-mb-8 lg:un-mb-20 un-ma'"
 		:layer="layer"
 	>
 		<div

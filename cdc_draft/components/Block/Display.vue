@@ -1,34 +1,19 @@
 <template>
 	<Block ref="blockRef">
 		<template #content>
-			<Title :data="store.data.heading" />
+			<div class="display">
 
-			<div class="concept">
+				<!-- Desktop -->
 				<div
 					v-if="!m"
-					class="concept__container desktop"
+					class="display__container desktop un-my-10 un-p-10 un-bg-#DADFE5 un-rd-4"
 				>
-					<!-- CARDS -->
-					<div class="un-max-w-131 md:un-mr-4">
-						<ul class="list-none p-0 m-0">
-							<li
-								v-for="(i, index) in store.data.cards"
-								v-ripple
-								class="un-cursor-pointer un-p-6 un-transition-all transition-duration-300 p-ripple"
-								style="--un-bg-opacity: .1;"
-								:class="{ 'bg-white un-text-black un-rd-2': active === index, 'un-text-white hover:un-bg-white un-rd-4': active !== index }"
-								@click="active = index"
-							>
-								<div class="un-mb-1 un-text-6 un-fw-semibold un-lh-8">{{ i.title }}</div>
-								<div class="un-fw-normal un-lh-5">{{ i.description }}</div>
-							</li>
-						</ul>
-					</div>
 
+					<!-- Display -->
 					<Carousel
 						:value="store.data.images"
-						:showIndicators="true"
-						:showNavigators="true"
+						:showIndicators="false"
+						:showNavigators="false"
 						v-model:page="active"
 					>
 						<template #item="i">
@@ -45,64 +30,86 @@
 							<i class="i-mdi:arrow-right-circle un-text-12"></i>
 						</template>
 					</Carousel>
+
+					<!-- Cards -->
+					<ul class="list-none p-0 m-0 flex gap-4">
+						<li
+							v-for="(i, index) in store.data.cards"
+							v-ripple
+							class="un-cursor-pointer un-p-6 un-transition-all transition-duration-300 p-ripple"
+							style="--un-bg-opacity: .1;"
+							:class="{ 'bg-white un-rd-2': active === index, 'hover:un-bg-white un-rd-4': active !== index }"
+							@click="active = index"
+						>
+							<div class="un-mb-1 un-text-6 un-fw-semibold un-lh-8">{{ i.title }}</div>
+							<div class="un-fw-normal un-lh-5">{{ i.description }}</div>
+						</li>
+					</ul>
 				</div>
 
+				<!-- Mobile -->
 				<div
 					v-if="m"
-					class="concept__container mobile"
+					class="display__container mobile flex un-flex-col un-items-center"
 				>
+					<!-- Display -->
 					<Carousel
 						:value="store.data.images"
 						:showIndicators="false"
 						:showNavigators="false"
 						v-model:page="active"
-						class="un-mb-2"
+						class="un-mb-2 un-w-full un-h-98 un-justify-center un-bg-#EAEAEC un-rd-2"
 					>
 						<template #item="i">
 							<img
 								:src="i.data.imgURL"
 								:alt="i.data.imgAlt"
-								class="un-max-h-70"
+								class="un-h-65"
 							>
 						</template>
 					</Carousel>
 
+					<!-- Cards -->
 					<Carousel
 						:value="store.data.cards"
 						:showNavigators="false"
 						v-model:page="active"
-						class="flex un-flex-col un-max-w-90 un-ma un-p-4 un-bg-white un-rd-2"
+						class="flex un-flex-col un-max-full un-ma un-p-4 un-bg-#EAEAEC un-rd-2"
 					>
 						<template #item="i">
 							<div class="un-mb-1 un-text-3.5 un-lh-5 un-fw-bold">{{ i.data.title }}</div>
-							<p class="un-mb-2 un-text-3.5 un-lh-5">{{ i.data.description }}</p>
+							<p class="un-mb-4 un-text-3.5 un-lh-5">{{ i.data.description }}</p>
 						</template>
 					</Carousel>
 				</div>
 
+				<Action />
 			</div>
 		</template>
 	</Block>
 </template>
 
 <script setup lang="ts">
-import Title from '@/components/UI/Title/Default.vue';
-import useMediaQueries from '@/composables/useMediaQueries';
+import Action from '@/components/Action/index.vue';
+import { useMediaQuery } from '@vueuse/core';
 import Carousel from 'primevue/carousel';
-import { useConceptStore } from '~/store/concept';
+import { useDisplayStore } from '~/store/display';
 
-const { m } = useMediaQueries();
-const store = useConceptStore();
+const store = useDisplayStore();
+const active = ref( 0 )
 
 const blockRef = ref( null );
 
 defineExpose( { blockRef } );
 
-const active = ref( 0 )
+const isTablet = useMediaQuery( '(min-width: 768px)' );
+const m = ref();
+
+watchEffect( () => isTablet.value ? m.value = false : m.value = true );
 </script>
 
 <style lang="scss">
-.concept {
+.display {
 	--indicator-size: 8px;
 
 	&__container {
@@ -111,9 +118,9 @@ const active = ref( 0 )
 			--button-size: 3rem;
 			--button-position: -17.5rem;
 
-			display: grid;
+			display: flex;
+			flex-direction: column;
 			gap: 1rem;
-			grid-template-columns: 524fr 740fr;
 
 			.p-carousel {
 

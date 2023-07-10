@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
 
 export const useConceptStore = defineStore('conceptStore', () => {
 	const data = ref({
@@ -25,10 +25,10 @@ export const useConceptStore = defineStore('conceptStore', () => {
       },
 ],
     images: [
-      { imgURL: 'images/sample1.jpg', imgAlt: 'Sample 1' },
-      { imgURL: 'images/sample2.jpg', imgAlt: 'Sample 2' },
-      { imgURL: 'images/sample3.jpg', imgAlt: 'Sample 3' },
-      { imgURL: 'images/sample4.jpg', imgAlt: 'Sample 4' },
+      { imgURL: 'images/model-sample.png', imgAlt: 'Sample 1' },
+      { imgURL: 'images/model-sample.png', imgAlt: 'Sample 2' },
+      { imgURL: 'images/model-sample.png', imgAlt: 'Sample 3' },
+      { imgURL: 'images/model-sample.png', imgAlt: 'Sample 4' },
     ]
   })
 	return {
