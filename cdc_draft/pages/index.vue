@@ -8,6 +8,7 @@
 		/>
 		<BlockForm margin="sm" />
 		<BlockDisplay layer="top" />
+		<BlockTestimonials />
 	</div>
 </template>
 
