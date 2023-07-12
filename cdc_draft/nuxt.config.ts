@@ -12,7 +12,6 @@ export default defineNuxtConfig({
   },
   modules: [
     '@unocss/nuxt',
-    // '@nuxtjs/eslint-module',
     '@pinia/nuxt',
     '@vueuse/nuxt',
 
@@ -20,8 +19,4 @@ export default defineNuxtConfig({
   pinia: {
 		autoImports: ['defineStore', 'storeToRefs']
 	},
-  // imports: {
-  //   autoImport: false
-  // },
-  // components: false
 })

@@ -1,0 +1,107 @@
+/* BRAND */
+:root {
+  --bg-gradient-purple:
+    radial-gradient(82.62% 82.62% at 65.86% 0%, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%),
+    radial-gradient(115.85% 115.85% at 55.4% 115.85%, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 100%),
+    radial-gradient(102.74% 191.59% at 0% 0%, #235CFF 0%, #9D75F3 100%);
+  --bg-gradient-green: linear-gradient(91.13deg, #00AC97 0.46%, #37D63D 99.76%);
+  --scrollbar-width: .25rem;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  max-width: calc(100% - var(--scrollbar-width));
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #111212;
+  line-height: 1.5rem;
+}
+
+p {
+  margin: unset;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  text-underline-offset: 5px;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+  width: 0.4rem;
+}
+@media (max-width: 1024px) {
+  ::-webkit-scrollbar {
+    width: 0.2rem;
+  }
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-gradient-purple);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bg-gradient-green);
+}
+
+/* Gradients */
+.cdc-gradient {
+  background-color: unset;
+  transition: background-image 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.cdc-gradient.purple {
+  background-image: var(--bg-gradient-purple);
+}
+.cdc-gradient.green {
+  background-image: var(--bg-gradient-green);
+}
+.cdc-gradient.to-green:hover {
+  background-image: var(--bg-gradient-green);
+}
+.cdc-gradient.to-purple:hover {
+  background-image: var(--bg-gradient-purple);
+}
+
+input[type=text]::-moz-placeholder {
+  font-size: 1rem;
+}
+
+input[type=text]::placeholder {
+  font-size: 1rem;
+}
+
+.p-carousel .p-carousel-indicators .p-carousel-indicator {
+  display: flex;
+  align-items: center;
+}
+.p-carousel .p-carousel-indicators .p-carousel-indicator button {
+  width: var(--indicator-size);
+  height: var(--indicator-size);
+  border-radius: 100%;
+}
+.p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button {
+  width: calc(var(--indicator-size) * 2);
+  height: calc(var(--indicator-size) * 2);
+  background-color: transparent !important;
+}/*# sourceMappingURL=global.css.map */
