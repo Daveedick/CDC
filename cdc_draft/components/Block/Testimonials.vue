@@ -72,7 +72,7 @@ const active = ref( 0 )
 			position: relative;
 			max-width: 800px;
 			--button-size: 3rem;
-			--button-position: 6rem;
+			--button-position: 7rem;
 
 			.p-carousel {
 
@@ -95,33 +95,32 @@ const active = ref( 0 )
 					left: 0;
 				}
 
-			}
 
-			.p-carousel-indicators {
-				padding: 0;
+				&-indicators {
+					padding: 0;
 
-				.p-carousel-indicator {
-					display: flex;
-					justify-content: center;
+					.p-carousel-indicator {
+						display: flex;
+						justify-content: center;
 
-					button {
-						background-color: white;
-					}
+						button {
+							background-color: white;
+						}
 
-					&.p-highlight button {
-						width: calc(var(--indicator-size) * 1.5);
-						height: calc(var(--indicator-size) * 1.5);
-						border: 1px solid #9D75F3;
+						&.p-highlight button {
+							width: calc(var(--indicator-size) * 1.5);
+							height: calc(var(--indicator-size) * 1.5);
+							border: 1px solid #9D75F3;
 
-						@media screen and (min-width: 640px) {
-							border-color: white;
-							width: calc(var(--indicator-size) * 2);
-							height: calc(var(--indicator-size) * 2);
+							@media screen and (min-width: 640px) {
+								border-color: white;
+								width: calc(var(--indicator-size) * 2);
+								height: calc(var(--indicator-size) * 2);
+							}
 						}
 					}
 				}
 			}
-
 		}
 	}
 

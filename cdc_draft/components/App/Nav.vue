@@ -4,7 +4,7 @@
 		style="--un-bg-opacity: .05; --un-backdrop-blur: blur(.5rem);"
 	>
 
-		<Menubar
+		<!-- <Menubar
 			v-if="m"
 			:model="menubarItems"
 			class="un-mr-2"
@@ -12,10 +12,10 @@
 			<template #submenuicon>
 				<i class="i-mdi:menu un-mr-2"></i>
 			</template>
-		</Menubar>
+		</Menubar> -->
 
 		<div
-			v-else
+			v-if="!m"
 			v-for="(  i, index  ) in   store.data.nav.links  "
 			:key="index"
 			class="mr-2"
@@ -42,7 +42,6 @@
 <script setup lang="ts">
 import ButtonDefault from '@/components/UI/Button/Default.vue';
 import useMediaQueries from '@/composables/useMediaQueries';
-import Menubar from 'primevue/menubar';
 import { useHeaderStore } from '~/store/header';
 
 const { m } = useMediaQueries();

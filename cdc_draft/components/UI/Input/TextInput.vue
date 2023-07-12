@@ -17,6 +17,7 @@ interface TextInput {
 	placeholder?: string
 	fieldName: string
 	hasError?: boolean
+	optionalClass?: string
 }
 
 defineProps<TextInput>();

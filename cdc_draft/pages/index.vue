@@ -9,6 +9,7 @@
 		<BlockForm margin="sm" />
 		<BlockDisplay layer="top" />
 		<BlockTestimonials />
+		<BlockContactUs margin="sm" />
 	</div>
 </template>
 
