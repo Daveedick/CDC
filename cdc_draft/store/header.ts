@@ -1,14 +1,15 @@
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
 
 export const useHeaderStore = defineStore('headerStore', () => {
 	const data = ref({
     logo: { imgURL: 'images/logo.svg', imgAlt: 'CDC Logo' },
     nav: {
+			title: 'Меню',
       links: [
-        'Как это работает',
-        'Примеры',
-        'Отзывы',
-        'Контакты',
+        { label: 'Как это работает', id: '#concept'},
+        { label: 'Примеры', id: '#display'},
+        { label: 'Отзывы', id: '#testimonials'},
+        { label: 'Контакты', id: '#contacts'},
       ],
       button: {desktop: 'В конструктор', mobile: 'Попробовать'}
     },

@@ -1,9 +1,12 @@
 <template>
 	<Block ref="blockRef">
 		<template #content>
-			<Title :data="store.data.heading" />
+			<div
+				class="concept"
+				:id="store.data.id"
+			>
+				<Title :data="store.data.heading" />
 
-			<div class="concept">
 				<div
 					v-if="!m"
 					class="concept__container desktop"

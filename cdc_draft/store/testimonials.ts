@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 
 export const useTestimonialsStore = defineStore('testimonialsStore', () => {
 	const data = ref({
+		id: 'testimonials',
     heading: {
       title: 'О нас пишут',
       subtitle: 'Создание одежды еще никогда не было таким простым'

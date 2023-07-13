@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 
 export const useFooterStore = defineStore('footerStore', () => {
 	const data = ref({
+		id: 'contacts',
     heading: {
       title: 'Свяжитесь с нами',
       subtitle: 'Оставьте свои контакты, чтобы мы могли больше рассказать вам о преимуществах и выгодах нашего сервиса для вашего бизнеса',

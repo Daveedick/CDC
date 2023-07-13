@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 
 export const useConceptStore = defineStore('conceptStore', () => {
 	const data = ref({
+		id: 'concept',
     heading: {
       title: 'Как это работает?',
       subtitle: 'Всего 4 простых действия, чтобы получить уникальную вещь на рынке одежды'

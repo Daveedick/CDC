@@ -1,11 +1,11 @@
 <template>
-	<nav>
+	<nav class="navigation">
 		<div
 			v-if="m"
 			class="flex un-gap-2"
 		>
 			<Button
-				label="Меню"
+				:label="store.data.nav.title"
 				icon="i-mdi:menu"
 				class="burger__button un-py-2.5 un-px-3 un-text-black un-lh-6 un-bg-white un-border-none"
 				@click="sideBarOpened = true"
@@ -21,19 +21,21 @@
 				position="right"
 				class="burger__menu un-text-white"
 			>
+
 				<NuxtLink
 					v-for="(i, index) in store.data.nav.links"
 					:key="index"
-					class="cursor-pointer un-mb-2 un-px-4 un-py-3 flex align-items-center active:un-bg-white text-white un-rd-2 un-transition-colors"
+					:to="i.id"
+					class="scrollactive-item cursor-pointer un-mb-2 un-px-4 un-py-3 flex align-items-center active:un-bg-white text-white un-rd-2 un-transition-colors"
 					style="--un-bg-opacity: .2;"
 					:class="anchor === index && 'un-bg-white'"
 					@click="anchor = index"
 				>
-					<span class="font-medium">{{ i }}</span>
+					<span class="font-medium">{{ i.label }}</span>
 				</NuxtLink>
 
 				<ButtonDefault
-					label="В конструктор"
+					:label="store.data.nav.button.desktop"
 					:py="py"
 					:px="px"
 				/>
@@ -42,18 +44,19 @@
 
 		<div
 			v-if="!m"
-			class="flex un-rd-2 un-p-2 un-bg-white un-backdrop-filter"
-			style="--un-bg-opacity: .05; --un-backdrop-blur: blur(.5rem);"
+			class="flex un-rd-2 un-p-2 un-bg-black un-backdrop-filter"
+			style="--un-bg-opacity: .5; --un-backdrop-blur: blur(.5rem);"
 		>
 			<NuxtLink
 				v-for="( i, index ) in  store.data.nav.links   "
 				:key="index"
-				class="cursor-pointer un-mr-2 un-px-4 un-py-3 flex align-items-center hover:un-bg-white text-white un-rd-2 un-transition-colors"
+				:to="i.id"
+				class="scrollactive-item cursor-pointer un-mr-2 un-px-4 un-py-3 flex align-items-center hover:un-bg-white text-white un-rd-2 un-transition-colors"
 				style="--un-bg-opacity: .1;"
 				:class="anchor === index && 'un-bg-white'"
 				@click="anchor = index"
 			>
-				<span class="font-medium">{{ i }}</span>
+				<span class="font-medium">{{ i.label }}</span>
 			</NuxtLink>
 
 			<ButtonDefault
@@ -62,9 +65,8 @@
 				:px="px"
 			/>
 		</div>
-
-		<ScrollTop />
 	</nav>
+	<ScrollTop />
 </template>
 
 <script setup lang="ts">
@@ -115,5 +117,3 @@ const sideBarOpened = ref( false )
 	}
 }
 </style>
-
-

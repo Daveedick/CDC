@@ -2,6 +2,7 @@ import { defineStore } from "pinia"
 
 export const useDisplayStore = defineStore('displayStore', () => {
 	const data = ref({
+		id: 'display',
 		images: [
 			{imgURL: 'images/model-sample.png', imgAlt: 'Sample 1'},
 			{imgURL: 'images/model-sample.png', imgAlt: 'Sample 2'},

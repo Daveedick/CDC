@@ -1,9 +1,12 @@
 <template>
 	<Block ref="blockRef">
 		<template #content>
-			<Title :data="store.data.heading" />
 
-			<div class="testimonial">
+			<div
+				class="testimonial"
+				:id="store.data.id"
+			>
+				<Title :data="store.data.heading" />
 
 				<div class="testimonial__container">
 					<Carousel
@@ -72,7 +75,7 @@ const active = ref( 0 )
 			position: relative;
 			max-width: 800px;
 			--button-size: 3rem;
-			--button-position: 7rem;
+			--button-position: -1rem;
 
 			.p-carousel {
 

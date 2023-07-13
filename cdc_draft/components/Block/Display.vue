@@ -1,7 +1,10 @@
 <template>
 	<Block ref="blockRef">
 		<template #content>
-			<div class="display">
+			<div
+				class="display"
+				:id="store.data.id"
+			>
 
 				<!-- Desktop -->
 				<div

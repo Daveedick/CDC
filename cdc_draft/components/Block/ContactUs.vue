@@ -2,37 +2,42 @@
 	<Block ref="blockRef">
 		<template #content>
 
-			<div class="contact-us">
+			<div
+				class="contact-us"
+				:id="store.data.id"
+			>
 				<div
 					v-if="m"
 					class="contact-us__container mobile flex flex-column un-gap-8"
 				>
-					<div class="flex flex-column un-gap-8 un-p-4 cdc-gradient purple un-rd-4">
-						<div class="flex flex-column un-gap-1 text-white">
-							<h2 class="un-text-6 un-lh-8">{{ store.data.heading.title }}</h2>
-							<p>{{ store.data.heading.subtitle }}</p>
-						</div>
-						<form class="flex flex-column un-gap-4 un-p-4 un-bg-white un-rd-4 text-black">
-							<div class="un-text-5 un-lh-6 un-font-bold un-mb-2">
-								{{ store.data.form.title }}
+					<div class="un-p-4 cdc-gradient purple un-rd-4">
+						<div class="un-max-w-200 un-ma flex flex-column un-gap-8">
+							<div class="flex flex-column un-gap-1 text-white">
+								<h2 class="un-text-6 un-lh-8">{{ store.data.heading.title }}</h2>
+								<p>{{ store.data.heading.subtitle }}</p>
 							</div>
-							<TextInput
-								fieldName="name"
-								placeholder="Имя"
-								class="un-mb-2"
-							/>
-							<TextInput
-								fieldName="phone"
-								placeholder="Телефон"
-							/>
-							<span class="un-text-3.5 un-lh-5">{{ store.data.form.privacyPolicy }}</span>
-							<ButtonDefault
-								label="Отправить"
-								:py="3"
-								:px="0"
-								@click="handleSubmit"
-							/>
-						</form>
+							<form class="flex flex-column un-gap-4 un-p-4 un-bg-white un-rd-4 text-black">
+								<div class="un-text-5 un-lh-6 un-font-bold un-mb-2">
+									{{ store.data.form.title }}
+								</div>
+								<TextInput
+									fieldName="name"
+									placeholder="Имя"
+									class="un-mb-2"
+								/>
+								<TextInput
+									fieldName="phone"
+									placeholder="Телефон"
+								/>
+								<span class="un-text-3.5 un-lh-5">{{ store.data.form.privacyPolicy }}</span>
+								<ButtonDefault
+									label="Отправить"
+									:py="3"
+									:px="0"
+									@click="handleSubmit"
+								/>
+							</form>
+						</div>
 					</div>
 
 					<!-- Logo -->
