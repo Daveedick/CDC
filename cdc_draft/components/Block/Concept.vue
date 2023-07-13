@@ -54,7 +54,7 @@
 					v-if="m"
 					class="concept__container mobile"
 				>
-					<Carousel
+					<!-- <Carousel
 						:value="store.data.images"
 						:showIndicators="false"
 						:showNavigators="false"
@@ -68,7 +68,21 @@
 								class="un-max-h-70"
 							>
 						</template>
-					</Carousel>
+					</Carousel> -->
+
+					<div class="concept__images un-mb-2 relative un-max-w-100 un-h-70">
+						<div
+							v-for="i, index in store.data.cards"
+							class="concept__image absolute un-h-full flex un-justify-center"
+						>
+							<img
+								:src="i.imgURL"
+								:alt="i.imgAlt"
+								:class="['un-w-full un-h-full', { 'opacity-0': index !== active }]"
+								style="transition: opacity .3s ease-in-out;"
+							>
+						</div>
+					</div>
 
 					<Carousel
 						:value="store.data.cards"
@@ -102,6 +116,7 @@ const blockRef = ref( null );
 defineExpose( { blockRef } );
 
 const active = ref( 0 )
+
 </script>
 
 <style lang="scss">
@@ -165,6 +180,18 @@ const active = ref( 0 )
 					}
 				}
 
+				// &-items-content {
+				// 	overflow: visible;
+				// }
+
+				// &-item {
+				// 	opacity: 0;
+				// 	transition: opacity .4s ease-in-out;
+
+				// 	&-active {
+				// 		opacity: 1;
+				// 	}
+				// }
 			}
 		}
 	}
