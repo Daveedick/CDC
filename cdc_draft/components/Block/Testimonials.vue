@@ -18,7 +18,7 @@
 					>
 						<template #item="i">
 							<div
-								class="un-mb-8 md:un-mb-12 un-mx-1 md:un-mx-2 un-p-6 md:un-p-12 un-text-4 un-lh-6 md:un-text-8 md:un-lh-10 un-bg-white un-font-italic un-rd-4 md:un-rd-8"
+								class="un-mb-8 md:un-mb-12 un-mx-1 md:un-mx-2 un-p-6 md:un-p-12 un-text-4 un-lh-6 lg:un-text-8 lg:un-lh-10 un-bg-white un-font-italic un-rd-4 md:un-rd-8"
 							>
 								<p>{{ i.data.content }}</p>
 							</div>

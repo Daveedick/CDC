@@ -6,13 +6,14 @@
 				class="contact-us"
 				:id="store.data.id"
 			>
+				<!-- MOBILE -->
 				<div
 					v-if="m"
 					class="contact-us__container mobile flex flex-column un-gap-8"
 				>
 					<div class="un-p-4 cdc-gradient purple un-rd-4">
 						<div class="un-max-w-200 un-ma flex flex-column un-gap-8">
-							<div class="flex flex-column un-gap-1 text-white">
+							<div class="flex flex-column sm:un-items-center sm:un-text-center un-gap-1 text-white">
 								<h2 class="un-text-6 un-lh-8">{{ store.data.heading.title }}</h2>
 								<p>{{ store.data.heading.subtitle }}</p>
 							</div>
@@ -24,10 +25,12 @@
 									fieldName="name"
 									placeholder="Имя"
 									class="un-mb-2"
+									v-model="name"
 								/>
 								<TextInput
 									fieldName="phone"
 									placeholder="Телефон"
+									v-model="phone"
 								/>
 								<span class="un-text-3.5 un-lh-5">{{ store.data.form.privacyPolicy }}</span>
 								<ButtonDefault
@@ -74,7 +77,7 @@
 
 				</div>
 
-				<!-- Desktop -->
+				<!-- DESKTOP -->
 				<div
 					v-if="!m"
 					class="contact-us__container desktop un-p-20 un-bg-#111212 un-rd-16"
@@ -101,10 +104,12 @@
 								fieldName="name"
 								placeholder="Имя"
 								class="un-mb-2"
+								v-model="name"
 							/>
 							<TextInput
 								fieldName="phone"
 								placeholder="Телефон"
+								v-model="phone"
 							/>
 							<div
 								class="un-mb-4 un-text-black"
@@ -173,15 +178,15 @@ const blockRef = ref( null );
 
 defineExpose( { blockRef } );
 
-// const name = ref( '' ),
-// 	phone = ref( '' );
+const name = ref( '' ),
+	phone = ref( '' );
 
 const handleSubmit = () => {
-	// const inputValues = {
-	// 	name: name.value,
-	// 	phone: phone.value,
-	// };
-	console.log( 'inputValues' );
+	const inputValues = {
+		name: name.value,
+		phone: phone.value,
+	};
+	console.log( inputValues );
 };
 </script>
 
@@ -200,21 +205,12 @@ const handleSubmit = () => {
 			}
 		}
 
-		&.mobile {}
+		// &.mobile {}
 	}
 
 	.p-inputtext {
 		background: rgb(0 0 0 / .05);
 		width: 100%;
-	}
-
-	.p-float-label input:focus~label,
-	.p-float-label input.p-filled~label,
-	.p-float-label textarea:focus~label,
-	.p-float-label textarea.p-filled~label,
-	.p-float-label .p-inputwrapper-focus~label,
-	.p-float-label .p-inputwrapper-filled~label {
-		color: black;
 	}
 }
 </style>

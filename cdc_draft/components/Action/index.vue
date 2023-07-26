@@ -2,7 +2,7 @@
 	<div class="action un-mt-8 sm:un-mt-16">
 		<div class="relative un-w-full un-p-8 sm:un-p-10 cdc-gradient purple un-rd-4">
 			<div class="action__content un-text-white">
-				<h2 class="un-mb-1 sm:un-mb-2 un-text-6 un-lh-8 md:un-text-12 md:un-lh-14">{{ store.data.title }}</h2>
+				<h2 class="un-mb-1 sm:un-mb-2 un-text-6 un-lh-8 lg:un-text-12 lg:un-lh-14">{{ store.data.title }}</h2>
 				<p class="un-mb-8 sm:un-mb-0 un-text-3.5 un-lh-5 md:un-text-4 md:un-lh-6">{{ store.data.subtitle }}</p>
 				<NuxtLink
 					to="/"

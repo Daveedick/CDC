@@ -1,5 +1,7 @@
 <template>
 	<nav class="navigation">
+
+		<!-- MOBILE -->
 		<div
 			v-if="m"
 			class="flex un-gap-2"
@@ -7,7 +9,7 @@
 			<Button
 				:label="store.data.nav.title"
 				icon="i-mdi:menu"
-				class="burger__button un-py-2.5 un-px-3 un-text-black un-lh-6 un-bg-white un-border-none"
+				class="burger__button un-py-2.5 un-px-3 un-text-black un-lh-4 un-bg-white un-border-none"
 				@click="sideBarOpened = true"
 			/>
 			<ButtonDefault
@@ -42,10 +44,11 @@
 			</Sidebar>
 		</div>
 
+		<!-- ABOVE MOBILE -->
 		<div
 			v-if="!m"
-			class="flex un-rd-2 un-p-2 un-bg-black un-backdrop-filter"
-			style="--un-bg-opacity: .5; --un-backdrop-blur: blur(.5rem);"
+			class="flex un-rd-2 un-p-2 un-bg-white un-backdrop-filter"
+			style="--un-bg-opacity: .05; --un-backdrop-blur: blur(.5rem);"
 		>
 			<NuxtLink
 				v-for="( i, index ) in  store.data.nav.links   "
@@ -78,7 +81,7 @@ import { useHeaderStore } from '~/store/header';
 
 const { m } = useMediaQueries();
 const store = useHeaderStore();
-const menubarItems = store.data.menubar;
+// const menubarItems = store.data.menubar;
 
 const anchor = ref();
 
@@ -112,6 +115,7 @@ const sideBarOpened = ref( false )
 	&__menu {
 		&.p-sidebar {
 			background: rgb(0 0 0 / 0.05);
+			// background: rgb(255 255 255 / 0.05);
 			backdrop-filter: blur(.5rem);
 		}
 	}

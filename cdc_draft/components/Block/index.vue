@@ -1,9 +1,10 @@
 <template>
 	<section
 		ref="instanceRef"
-		:class="margin === 'l' ? 'un-max-w-360 un-mb-8 lg:un-mb-40 un-ma' : 'un-max-w-360 un-mb-8 lg:un-mb-20 un-ma'"
+		:class="['un-max-w-360 un-mb-8 un-ma', { 'lg:un-mb-40': margin === 'l' }, { 'lg:un-mb-20': margin === 'sm' }, { 'lightened': lightened }]"
 		:layer="layer"
 	>
+		<!-- :class="margin === 'l' ? 'un-max-w-360 un-mb-8 lg:un-mb-40 un-ma' : 'un-max-w-360 un-mb-8 lg:un-mb-20 un-ma'" -->
 		<div
 			:class="layer === 'base' ? 'un-mt-8 un-mx-4 lg:un-mx-20' : 'un-p-4 un-pb-8 lg:un-p-16 un-bg-#191A21 un-rd-4 md:un-rd-16'"
 		>
@@ -23,10 +24,12 @@ defineExpose( { instanceRef } );
 interface BlockProps {
 	layer?: 'top' | 'base'
 	margin?: 'l' | 'sm'
+	lightened?: boolean
 }
 
 withDefaults( defineProps<BlockProps>(), {
 	layer: 'base',
-	margin: 'l'
+	margin: 'l',
+	lightened: false
 } );
 </script>

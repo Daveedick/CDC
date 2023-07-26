@@ -13,7 +13,7 @@
 		<NuxtLink
 			to="/"
 			v-ripple
-			class="un-w-full un-inline-block lg:un-wa un-mb-8 lg:un-mb-20 un-px-6 un-py-3 lg:un-px-6 lg:un-py-5 text-center text-white font-bold un-decoration-none cdc-gradient purple to-green un-rd-2 cursor-pointer white-space-nowrap un-border-none un-transition-all p-ripple"
+			class="un-w-full un-inline-block sm:un-wa un-mb-8 lg:un-mb-20 un-px-6 un-py-3 lg:un-px-6 lg:un-py-5 text-center text-white font-bold un-decoration-none cdc-gradient purple to-green un-rd-2 cursor-pointer white-space-nowrap un-border-none un-transition-all p-ripple"
 		>
 			<span>{{ data.button }}</span>
 		</NuxtLink>

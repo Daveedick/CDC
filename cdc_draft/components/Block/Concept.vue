@@ -13,7 +13,7 @@
 				>
 					<!-- CARDS -->
 					<div class="un-max-w-131 md:un-mr-4">
-						<ul class="list-none p-0 m-0">
+						<ul class="list-none p-0 m-0 un-h-full flex un-flex-col un-justify-center">
 							<li
 								v-for="(i, index) in store.data.cards"
 								v-ripple
@@ -22,8 +22,14 @@
 								:class="{ 'bg-white un-text-black un-rd-2': active === index, 'un-text-white hover:un-bg-white un-rd-4': active !== index }"
 								@click="active = index"
 							>
-								<div class="un-mb-1 un-text-6 un-fw-semibold un-lh-8">{{ i.title }}</div>
-								<div class="un-fw-normal un-lh-5">{{ i.description }}</div>
+								<div
+									class="un-mb-1 un-fw-semibold un-text-5 un-lh-6"
+									:class="{ 'un-text-6 un-lh-8': isDesktopL }"
+								>{{ i.title }}</div>
+								<div
+									class="un-fw-normal un-text-3.5 un-lh-4"
+									:class="{ 'un-text-4 un-lh-5': isDesktopL }"
+								>{{ i.description }}</div>
 							</li>
 						</ul>
 					</div>
@@ -31,7 +37,7 @@
 					<Carousel
 						:value="store.data.images"
 						:showIndicators="true"
-						:showNavigators="true"
+						:showNavigators="isDesktopL ?? true"
 						v-model:page="active"
 					>
 						<template #item="i">
@@ -70,10 +76,10 @@
 						</template>
 					</Carousel> -->
 
-					<div class="concept__images un-mb-2 relative un-max-w-100 un-h-70">
+					<div class="concept__images un-mb-2 relative un-max-w-100 un-h-70 un-ma">
 						<div
 							v-for="i, index in store.data.cards"
-							class="concept__image absolute un-h-full flex un-justify-center"
+							class="concept__image absolute un-h-full un-w-full flex un-justify-center"
 						>
 							<img
 								:src="i.imgURL"
@@ -104,11 +110,18 @@
 
 <script setup lang="ts">
 import Title from '@/components/UI/Title/Default.vue';
-import useMediaQueries from '@/composables/useMediaQueries';
 import Carousel from 'primevue/carousel';
+
+import { useMediaQuery } from '@vueuse/core';
+
+const isTablet = useMediaQuery( '(min-width: 768px)' );
+const isDesktopL = useMediaQuery( '(min-width: 1440px)' );
+const m = ref();
+
+watchEffect( () => isTablet.value ? m.value = false : m.value = true );
+
 import { useConceptStore } from '~/store/concept';
 
-const { m } = useMediaQueries();
 const store = useConceptStore();
 
 const blockRef = ref( null );
@@ -131,7 +144,11 @@ const active = ref( 0 )
 
 			display: grid;
 			gap: 1rem;
-			grid-template-columns: 524fr 740fr;
+			grid-template-columns: repeat(2, 1fr);
+
+			@media screen and (min-width: 1440px) {
+				grid-template-columns: 524fr 740fr;
+			}
 
 			.p-carousel {
 
@@ -162,6 +179,7 @@ const active = ref( 0 )
 		}
 
 		&.mobile {
+
 			.p-carousel {
 
 				.p-carousel-indicators {

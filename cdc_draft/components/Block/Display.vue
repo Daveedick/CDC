@@ -56,7 +56,21 @@
 					class="display__container mobile flex un-flex-col un-items-center"
 				>
 					<!-- Display -->
-					<Carousel
+					<div class="display__images un-mb-2 relative un-w-full un-h-98 un-bg-#EAEAEC un-rd-2">
+						<div
+							v-for="(i, index) in store.data.images"
+							class="display__image absolute un-h-full un-w-full"
+						>
+							<img
+								:src="i.imgURL"
+								:alt="i.imgAlt"
+								:class="['un-w-full un-h-full', { 'opacity-0': index !== active }]"
+								style="transition: opacity .3s ease-in-out;"
+							>
+						</div>
+					</div>
+
+					<!-- <Carousel
 						:value="store.data.images"
 						:showIndicators="false"
 						:showNavigators="false"
@@ -70,7 +84,7 @@
 								class="un-h-65"
 							>
 						</template>
-					</Carousel>
+					</Carousel> -->
 
 					<!-- Cards -->
 					<Carousel
@@ -171,8 +185,9 @@ watchEffect( () => isTablet.value ? m.value = false : m.value = true );
 						}
 					}
 				}
-
 			}
+
+
 		}
 	}
 

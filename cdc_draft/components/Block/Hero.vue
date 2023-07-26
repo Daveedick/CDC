@@ -25,7 +25,8 @@
 					class="col-12 lg:col-4"
 				>
 					<div
-						class="un-py-8 un-px-11 un-rd-4 shadow-2 flex align-items-center un-bg-white un-hover-scale"
+						class="un-py-2 un-px-4 un-rd-2 un-text-3.5 shadow-2 flex align-items-center un-bg-white un-hover-scale"
+						:class="{ 'un-py-8 un-px-11 un-rd-4 un-text-4': isDesktopL }"
 						style="--un-bg-opacity: .05;"
 					>
 						<div
@@ -60,10 +61,15 @@
 <script setup lang="ts">
 import VideoPlug from '@/components/UI/Other/VideoPlug.vue';
 import Title from '@/components/UI/Title/Default.vue';
-import useMediaQueries from '@/composables/useMediaQueries';
 import { useHeroStore } from '@/store/hero';
+import { useMediaQuery } from '@vueuse/core';
 
-const { m } = useMediaQueries();
+const isDesktop = useMediaQuery( '(min-width: 1024px)' );
+const isDesktopL = useMediaQuery( '(min-width: 1440px)' );
+const m = ref();
+
+watchEffect( () => isDesktop.value ? m.value = false : m.value = true );
+
 const store = useHeroStore();
 
 const blockRef = ref( null );

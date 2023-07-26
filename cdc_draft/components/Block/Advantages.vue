@@ -4,6 +4,7 @@
 			<Title :data="store.data.heading" />
 
 			<div class="advantages">
+				<!-- DESKTOP -->
 				<div
 					v-if="!m"
 					class="advantages__container desktop"
@@ -13,20 +14,30 @@
 						<!-- 1 -->
 						<div
 							v-for="i in store.data.rows"
-							class="un-grid un-gap-8"
+							class="advantages__column un-grid un-gap-8"
 							:style="{ gridTemplateRows: i.fraction }"
 						>
 							<div
 								v-for="y in i.cards"
-								:class="`un-p-8 ${y.backgroundColor} un-rd-4 un-hover-scale`"
+								:class="`advantages__card un-p-8 ${y.backgroundColor} un-rd-4 un-hover-scale`"
 							>
 								<div :class="`un-text-${y.textColor} un-text-6 un-lh-8 un-fw-bold un-mb-2`">{{ y.title }}</div>
 								<div :class="`un-text-${y.textColor}`">{{ y.description }}</div>
+								<div
+									v-if="y.image"
+									:class="`advantages__image advantages__image-${y.imgID}`"
+								>
+									<img
+										:src="y.image"
+										:alt="y.title"
+									>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 
+				<!-- MOBILE -->
 				<div
 					v-if="m"
 					class="advantages__container mobile"
@@ -40,9 +51,15 @@
 						class="un-mb-8"
 					>
 						<template #item="i">
-							<div class="un-max-w-90 un-h-88 un-ma un-mx-2 un-p-8 cdc-gradient purple un-rd-4">
+							<div class="advantages__card relative un-max-w-90 un-h-88 un-ma un-mx-2 un-p-8 cdc-gradient purple un-rd-4">
 								<div class="un-text-white un-text-6 un-lh-8 un-fw-bold un-mb-2">{{ i.data.title }}</div>
 								<div class="un-text-white">{{ i.data.description }}</div>
+								<div class="advantages__image">
+									<img
+										:src="i.data.image"
+										:alt="i.data.title"
+									>
+								</div>
 							</div>
 						</template>
 					</Carousel>
@@ -55,11 +72,16 @@
 
 <script setup lang="ts">
 import Title from '@/components/UI/Title/Default.vue';
-import useMediaQueries from '@/composables/useMediaQueries';
 import Carousel from 'primevue/carousel';
 import { useAdvantagesStore } from '~/store/advantages';
 
-const { m } = useMediaQueries();
+import { useMediaQuery } from '@vueuse/core';
+
+const isDesktop = useMediaQuery( '(min-width: 1250px)' );
+const m = ref();
+
+watchEffect( () => isDesktop.value ? m.value = false : m.value = true );
+
 const store = useAdvantagesStore();
 
 const blockRef = ref( null );
@@ -83,35 +105,61 @@ const responsiveOptions = ref( [
 
 	&__container {
 
-		// &.desktop {
+		&.desktop {
 
-		//   .p-carousel {
+			.advantages {
 
-		//     .p-carousel-next,
-		//     .p-carousel-prev {
-		//       top: unset;
-		//       bottom: var(--button-position);
-		//       width: var(--button-size);
-		//       height: var(--button-size);
-		//       border-radius: 100%;
-		//     }
+				&__card {
+					position: relative;
+					overflow: hidden;
+				}
 
-		//     .p-carousel-indicators {
+				&__image {
+					position: absolute;
+					right: 0;
+					bottom: 0;
 
-		//       .p-carousel-indicator {
-		//         button {
-		//           background-color: white;
-		//         }
+					&-1 {
+						width: 80%;
+						height: 365px;
+					}
 
-		//         &.p-highlight button {
-		//           width: calc(var(--indicator-size) * 2);
-		//           height: calc(var(--indicator-size) * 2);
-		//           border: 1px solid white;
-		//         }
-		//       }
-		//     }
-		//   }
-		// }
+					&-3 {
+						right: 5%;
+						width: 90%;
+						height: 132px;
+					}
+
+				}
+			}
+
+			// .p-carousel {
+
+			//   .p-carousel-next,
+			//   .p-carousel-prev {
+			//     top: unset;
+			//     bottom: var(--button-position);
+			//     width: var(--button-size);
+			//     height: var(--button-size);
+			//     border-radius: 100%;
+			//   }
+
+			//   .p-carousel-indicators {
+
+			//     .p-carousel-indicator {
+			//       button {
+			//         background-color: white;
+			//       }
+
+			//       &.p-highlight button {
+			//         width: calc(var(--indicator-size) * 2);
+			//         height: calc(var(--indicator-size) * 2);
+			//         border: 1px solid white;
+			//       }
+			//     }
+			//   }
+			// }
+		}
 
 		&.mobile {
 			.p-carousel {
@@ -141,8 +189,29 @@ const responsiveOptions = ref( [
 					justify-content: center;
 				}
 			}
+
+			.advantages {
+
+				&__card {
+					overflow: hidden;
+				}
+
+				&__image {
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					width: 100%;
+					max-height: 160px;
+					display: flex;
+					align-items: flex-end;
+					overflow: hidden;
+
+					img {
+						object-fit: contain;
+					}
+				}
+			}
 		}
 	}
-
 }
 </style>
