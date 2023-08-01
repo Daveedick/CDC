@@ -108,6 +108,37 @@
 	</Block>
 </template>
 
+<!-- <script lang="ts">
+import Title from '@/components/UI/Title/Default.vue';
+import Carousel from 'primevue/carousel';
+
+
+export default {
+	setup() {
+		const isTablet = useMediaQuery( '(min-width: 768px)' );
+		const isDesktopL = useMediaQuery( '(min-width: 1440px)' );
+		const m = ref();
+
+		const store = useConceptStore();
+
+		const blockRef = ref( null );
+
+		// defineExpose( { blockRef } );
+
+		const active = ref( 0 )
+
+		watchEffect( () => isTablet.value ? m.value = false : m.value = true );
+
+		return {
+			isTablet,
+			isDesktopL,
+			m,
+			blockRef
+		}
+	},
+}
+</script> -->
+
 <script setup lang="ts">
 import Title from '@/components/UI/Title/Default.vue';
 import Carousel from 'primevue/carousel';
@@ -129,7 +160,6 @@ const blockRef = ref( null );
 defineExpose( { blockRef } );
 
 const active = ref( 0 )
-
 </script>
 
 <style lang="scss">

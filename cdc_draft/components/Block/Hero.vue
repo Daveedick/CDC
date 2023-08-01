@@ -2,19 +2,19 @@
 	<Block ref="blockRef">
 		<template #content>
 
+			<!-- For rendering -->
+			<!-- <div>
+				<i class="i-mdi:chart-timeline-variant-shimmer"></i>
+				<i class="i-mdi:robot-industrial-outline"></i>
+				<i class="i-mdi:lightning-bolt-outline"></i>
+			</div> -->
+
 			<Title
 				variant="main"
 				:data="store.data.heading"
 			/>
 
 			<VideoPlug />
-
-			<!-- For proper rendering -->
-			<div class="hidden">
-				<i class="i-mdi:chart-timeline-variant-shimmer"></i>
-				<i class="i-mdi:robot-industrial-outline"></i>
-				<i class="i-mdi:lightning-bolt-outline"></i>
-			</div>
 
 			<div
 				v-if="!m"
